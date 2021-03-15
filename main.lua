@@ -5,6 +5,14 @@ local player = {
     r = 50
 }
 
+local obstacle = {
+    x = 200,
+    y = 300,
+    r = 25
+
+
+}
+
 
 
 
@@ -39,8 +47,10 @@ end
 
 love.draw = function ()
    
+    love.graphics.setColor(1, 0, 0)
     love.graphics.circle("fill", player.x, player.y, player.r)
-
+    love.graphics.setColor(1, 0, 2)
+    love.graphics.circle("fill", obstacle.x, obstacle.y, obstacle.r)
 
 
     
