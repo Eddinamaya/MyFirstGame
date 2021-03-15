@@ -2,10 +2,6 @@ local x = 400
 local y = 600
 local r = 50
 
-local x1 = 400
-local y1 = 300
-local r1 = 50
-
 
 
 love.load = function ()
@@ -40,7 +36,6 @@ end
 love.draw = function ()
    
     love.graphics.circle("fill", x, y, r)
-    love.graphics.circle("fill", x1, y1, r1)
-       
+    
     --print('draw')
 end
