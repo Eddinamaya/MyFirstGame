@@ -1,6 +1,10 @@
-local x = 400
-local y = 600
-local r = 50
+
+local player = {
+    x = 400,
+    y = 600,
+    r = 50
+}
+
 
 
 
@@ -14,19 +18,19 @@ love.update = function ()
     --print('uptaderat')
 
     if love.keyboard.isDown("d") then
-        x = x + 5
+        player.x = player.x + 5
         end
 
     if love.keyboard.isDown("a") then
-        x = x - 5
+        player.x = player.x - 5
     end 
 
     if love.keyboard.isDown("w") then
-        y = y - 5
+        player.y = player.y - 5
     end 
 
     if love.keyboard.isDown("s") then
-        y = y + 5
+        player.y = player.y + 5
     end 
 
 
@@ -35,7 +39,10 @@ end
 
 love.draw = function ()
    
-    love.graphics.circle("fill", x, y, r)
+    love.graphics.circle("fill", player.x, player.y, player.r)
+
+
+
     
     --print('draw')
 end
