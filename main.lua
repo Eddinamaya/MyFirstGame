@@ -1,8 +1,10 @@
-player.x = 200
-player.y = 300
-player.r = 25
+local player = {
+x = 200,
+y = 300,
+r = 25
+}
 
-obstacle = {
+local obstacle = {
 
     {   x = 400,
         y = 600,
