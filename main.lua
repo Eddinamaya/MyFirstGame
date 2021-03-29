@@ -1,20 +1,16 @@
+obstacle = {
 
-local player = {
-    x = 400,
-    y = 600,
-    r = 50
-}
+  [1] = (x = 400)
+    y = 600
+    r = 50,
 
-local obstacle = {
+
     x = 200,
     y = 300,
     r = 25
 
 
 }
-
-
-
 
 love.load = function ()
     print('The Game hass started')
@@ -53,6 +49,6 @@ love.draw = function ()
     love.graphics.circle("fill", obstacle.x, obstacle.y, obstacle.r)
 
 
-    
+      
     --print('draw')
 end
