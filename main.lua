@@ -5,7 +5,7 @@ local player = {
 }
 
 local obstacles = {{
-    x = 100,
+    x = 200,
     y = 300,
     r = 30
 }, {
@@ -48,8 +48,11 @@ love.update = function()
     end
 
     for i = 1, #obstacles do
+        --om bollen har paserat skärmen
         if obstacles[i].y - obstacles[i].r > 600 then
             obstacles[i].y = -obstacles[i].r
+            obstacles[i].x = love.math.random(0,600)
+            print(obstacles[i].x)
         end
     end
 end
