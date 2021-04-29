@@ -1,59 +1,60 @@
-
 local player = {
-x = 200,
-y = 300,
-r = 25
-}
-local obstacles = {
-    {
-        x = 100,
-        y = 300,
-        r = 50
-    },
-
-    {
-        x = 100,
-        y = 100,
-        r = 100
-    }
+    x = 200,
+    y = 300,
+    r = 25
 }
 
+local obstacles = {{
+    x = 100,
+    y = 300,
+    r = 30
+}, {
+    x = 100,
+    y = 100,
+    r = 30
+}}
 
-love.keypress = function ()
-    
+love.keypress = function()
+
 end
 
-love.load = function ()
+love.load = function()
     print('The Game hass started')
-    print(love.graphics.getDimensions( ))
+    print(love.graphics.getDimensions())
 
 end
 
-
-love.update = function ()
+love.update = function()
 
     if love.keyboard.isDown("d") then
         player.x = player.x + 5
-        end
+    end
 
     if love.keyboard.isDown("a") then
         player.x = player.x - 5
-    end 
+    end
 
     if love.keyboard.isDown("w") then
         player.y = player.y - 5
-    end 
+    end
 
     if love.keyboard.isDown("s") then
         player.y = player.y + 5
-    end 
+    end
 
-        for i = 1, #obstacles do
-            obstacles[i].y = obstacles[i].y + 3
+    -- Bollarnas förflyttning:
+    for i = 1, #obstacles do
+        obstacles[i].y = obstacles[i].y + 3
+    end
+
+    for i = 1, #obstacles do
+        if obstacles[i].y - obstacles[i].r > 600 then
+            obstacles[i].y = -obstacles[i].r
         end
+    end
 end
 
-love.draw = function ()
+love.draw = function()
     love.graphics.setColor(1, 0, 0)
     love.graphics.circle("fill", player.x, player.y, player.r)
     love.graphics.setColor(1, 2, 0)
