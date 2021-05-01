@@ -48,11 +48,22 @@ love.update = function()
     end
 
     for i = 1, #obstacles do
-        --om bollen har paserat skärmen
+        -- om bollen har paserat skärmen
         if obstacles[i].y - obstacles[i].r > 600 then
             obstacles[i].y = -obstacles[i].r
-            obstacles[i].x = love.math.random(0,600)
-            print(obstacles[i].x)
+            obstacles[i].x = love.math.random(0, 600)
+            
+        end
+    end
+    -- Ctrl Shift P för Formaten!!
+    -- avståndsformeln
+    -- Nästa steg: skapa kollision med hjälp av for loop och if sats,
+    -- använda phytagorasats för att mäta av ståndet mellan radien på bollarna
+    for i = 1, #obstacles do
+        if math.sqrt((obstacles[i].x - player.x) ^ 2 + (obstacles[i].y - player.y) ^ 2) < (player.r + obstacles[i].r) then
+            print("now")
+            
+            -- body
         end
     end
 end
