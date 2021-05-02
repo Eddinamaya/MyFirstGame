@@ -1,3 +1,4 @@
+-- Ctrl Shift P för Formaten!!
 local player = {
     x = 200,
     y = 550,
@@ -18,7 +19,6 @@ love.keypress = function()
 
 end
 
-
 love.load = function()
     print('The Game hass started')
     print(love.graphics.getDimensions())
@@ -29,7 +29,7 @@ love.update = function()
 
     if love.keyboard.isDown("e") then
         love.event.quit()
-        
+
     end
 
     if love.keyboard.isDown("d") then
@@ -61,10 +61,7 @@ love.update = function()
 
         end
     end
-    -- Ctrl Shift P för Formaten!!
-    -- avståndsformeln
-    -- Nästa steg: skapa kollision med hjälp av for loop och if sats,
-    -- använda phytagorasats för att mäta av ståndet mellan radien på bollarna
+
     for i = 1, #obstacles do
         -- om Distansen mellan medelpunkterna på circlarna är mindre än radien på båda cirklar då krashar dem med varandra
         if math.sqrt((obstacles[i].x - player.x) ^ 2 + (obstacles[i].y - player.y) ^ 2) < (player.r + obstacles[i].r) then
