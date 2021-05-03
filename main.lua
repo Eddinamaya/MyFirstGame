@@ -15,9 +15,12 @@ local obstacles = {{
     r = 30
 }}
 
-love.keypress = function()
-
-end
+local menu = {
+    x = 300,
+    y = 250,
+    sx = 4,
+    sy = 4
+}
 
 love.load = function()
     print('The Game hass started')
@@ -80,5 +83,9 @@ love.draw = function()
     for i = 1, #obstacles do
         love.graphics.circle("fill", obstacles[i].x, obstacles[i].y, obstacles[i].r)
     end
+    -- print ut texten
+  
+        love.graphics.print("start", menu.x, menu.y, r, menu.sx, menu.sy)
+
 
 end
