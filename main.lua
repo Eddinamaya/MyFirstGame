@@ -15,12 +15,19 @@ local obstacles = {{
     r = 30
 }}
 
-local menu = {
+local menu = {{
     x = 300,
     y = 250,
     sx = 4,
-    sy = 4
-}
+    sy = 4,
+    text = "Exit"
+},{
+    x = 300,
+    y = 200,
+    sx = 4,
+    sy = 4,
+    text = "Start"
+}}
 
 love.load = function()
     print('The Game hass started')
@@ -85,7 +92,9 @@ love.draw = function()
     end
     -- print ut texten
   
-        love.graphics.print("start", menu.x, menu.y, r, menu.sx, menu.sy)
-
+        -- love.graphics.print(menu[2].text, menu[2].x, menu[2].y, 0, menu[2].sx, menu[2].sy)
+    for i = 1, #menu do
+        love.graphics.print(menu[i].text, menu[i].x, menu[i].y, 0, menu[i].sx, menu[i].sy)
+    end
 
 end
