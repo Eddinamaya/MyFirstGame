@@ -1,7 +1,6 @@
 -- Ctrl Shift P för Formaten!!
 -- om variable är True eller false så antingen ska spelaet köras eller så ska skärmen målas
-local  runGame = true
-
+local runGame = false
 
 local player = {
     x = 200,
@@ -21,17 +20,19 @@ local obstacles = {{
 
 local menu = {{
     x = 300,
-    y = 250,
-    sx = 4,
-    sy = 4,
-    text = "Exit"
-}, {
-    x = 300,
     y = 200,
     sx = 4,
     sy = 4,
     text = "Start"
+}, {
+    x = 300,
+    y = 250,
+    sx = 4,
+    sy = 4,
+    text = "Exit"
 }}
+
+local menuIndex = 2
 
 love.load = function()
     print('The Game hass started')
@@ -40,16 +41,33 @@ love.load = function()
 end
 
 love.update = function()
-    if love.keyboard.isDown("m") then 
-        runGame = false
-        end
-        
-    if runGame == true then
 
-        if love.keyboard.isDown("e") then
+    if love.keyboard.isDown("q") then
+        runGame = true
+    end
+
+    if menuIndex == 2 then
+
+        if love.keyboard.isDown("return") then
             love.event.quit()
-
         end
+
+    else
+        if love.keyboard.isDown("return") then
+            runGame = true
+        end
+
+    end
+
+    if love.keyboard.isDown("up") then
+        menuIndex = 1
+    end
+
+    if love.keyboard.isDown("down") then
+        menuIndex = 2
+    end
+
+    if runGame == true then
 
         if love.keyboard.isDown("d") then
             player.x = player.x + 5
@@ -86,7 +104,7 @@ love.update = function()
             -- om Distansen mellan medelpunkterna på circlarna är mindre än radien på båda cirklar då krashar dem med varandra
             if math.sqrt((obstacles[i].x - player.x) ^ 2 + (obstacles[i].y - player.y) ^ 2) <
                 (player.r + obstacles[i].r) then
-                love.event.quit()
+                runGame = false
                 print("now")
 
             end
@@ -105,9 +123,19 @@ love.draw = function()
         end
         -- print ut texten
     end
-    -- love.graphics.print(menu[2].text, menu[2].x, menu[2].y, 0, menu[2].sx, menu[2].sy)
-    for i = 1, #menu do
-        love.graphics.print(menu[i].text, menu[i].x, menu[i].y, 0, menu[i].sx, menu[i].sy)
-    end
+    if runGame == false then
+        -- love.graphics.print(menu[2].text, menu[2].x, menu[2].y, 0, menu[2].sx, menu[2].sy)
 
+        for i = 1, #menu do
+            if i == menuIndex then
+                love.graphics.setColor(0, 0, 1)
+
+            else
+                love.graphics.setColor(1, 1, 1)
+            end
+            love.graphics.print(menu[i].text, menu[i].x, menu[i].y, 0, menu[i].sx, menu[i].sy)
+        end
+
+        love.graphics.setBackgroundColor(4, 0, 9)
+    end
 end
