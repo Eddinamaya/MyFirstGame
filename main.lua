@@ -1,5 +1,4 @@
--- Ctrl Shift P för Formaten!!
--- om variable är True eller false så antingen ska spelaet köras eller så ska skärmen målas
+
 local runGame = false
 
 local player = {
