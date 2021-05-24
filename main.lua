@@ -44,7 +44,7 @@ local menu = {{
 local menuIndex = 2
 
 local lastTime = love.timer.getTime()
-
+local speed = 2
 love.load = function()
     print('The Game hass started')
     print(love.graphics.getDimensions())
@@ -83,6 +83,7 @@ love.update = function()
         local currentTime = love.timer.getTime()
         if currentTime - lastTime > 10 then
             print("10")
+            speed = speed + 1
             lastTime = currentTime
         end
 
@@ -103,7 +104,7 @@ love.update = function()
         end
         -- Bollarnas förflyttning:
         for i = 1, #obstacles do
-            obstacles[i].y = obstacles[i].y + 3
+            obstacles[i].y = obstacles[i].y + speed
         end
 
         for i = 1, #obstacles do
